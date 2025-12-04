@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit car info</title>
+</head>
+<body>
+    <h1> EDIT <%= foundCar.name %></h1>
+    <form action="/car/<%= foundCar._id %>?_method=PUT" method="post">
+        <label for="name">Name:</label>
+        <input name="name" id="name" type="text" value="<%= foundCar.name %>">
+
+        
+        <label for="brand">brand:</label>
+        <input name="brand" id="brand" type="text" value="<%= foundCar.brand %>">
+
+        <label for="isItStreetLegal">is the car street legal</label>
+        <input id="isItStreetLegal"type='checkbox' <%  if(foundCar.isItStreetLegal){  %> checked<%} %>>
+
+
+        <label for="kind">car kind :</label>
+        <input name="kind" id="kind" type="text" value="<%= foundCar.kind %>">
+
+        <button type="submit">update</button>
+
+    </form>
+        <h2>car kinds sedans, hatchbacks, coupes, convertibles, station wagons, minivans, vans, SUVs , pickup trucks</h2>
+
+</body>
+</html>

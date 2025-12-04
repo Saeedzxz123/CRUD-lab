@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>car info</title>
+</head>
+<body>
+
+    <h1>car info</h1>
+    <h2> Name: <%= foundCar.name   %>  </h2>
+    <h3> brand: <%= foundCar.brand%></h3>
+    <h3>kind: <%= foundCar.kind%></h3>
+    <li>  <% if(foundCar.isItStreetLegal === true){
+        isItStreetLegal = "it street legal car"
+    }
+    else{isItStreetLegal = 'not a street legal car'}%>
+    <%= isItStreetLegal%> </li>
+
+    <form action="/car/<%= foundCar._id%>?_method=DELETE" method="post">
+        
+        <button type="submit">Delete the car</button>
+        </form>
+        <form action="/car/<%= foundCar._id %>/edit">
+            <button  href=>edit car</button>
+        </form>
+            
+</body>
+</html>

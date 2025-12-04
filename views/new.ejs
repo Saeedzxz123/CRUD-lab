@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cars</title>
+</head>
+<body>
+
+    <h1>NEW car</h1>
+
+    <form action="/car" method="post">
+    <label for="name">Name:</label>
+    <input name="name" id="name" type="text">
+
+    <label for="brand">brand:</label>
+    <input name="brand" id="brand" type="text">
+
+    <label for="isItStreetLegal">is the car street legal :</label>
+    <input name="isItStreetLegal" id="isItStreetLegal" type="checkbox">
+
+    <label for="kind">car king :</label>
+    <select name="kind" id="kind">
+        <option value="sedan">Sedan</option>
+        <option value="coupe">Coupe</option>
+        <option value="convertible">Convertible</option>
+        <option value="station wagon">Station wagon</option>
+        <option value="minivan">Minivan</option>
+        <option value="van">Van</option>
+        <option value="SUV">SUV</option>
+        <option value="pickup truck">Pickup truck</option>
+
+    </select>
+
+        <button type="submit"> Create new car</button>
+    </form>
+   
+</body>
+</html>
