@@ -3,7 +3,7 @@ const app = express() // creates a express application
 require("dotenv").config() // allows us to use the .env variables
 const mongoose = require("mongoose") // importing mongoose
 
-const Car = require('./models/car')
+const car = require('./models/car')
 
 const methodOverride = require('method-override')
 
@@ -41,15 +41,16 @@ conntectToDB()
 
 
 
-
 try{
-app.get('/',(req,res)=>{
-    res.render('car.ejs')
-})
-}
+app.get('/',async (req,res)=> {
+    const Car = await car.find();
+    res.render('car.ejs',{Car})
+})}
+
 catch(err){
     console.log(err)
 }
+
 
 try{
 app.get('/new',(req,res)=>{
@@ -68,7 +69,7 @@ app.post("/car", async (req, res) => {
   } else {
     req.body.isItStreetLegal = false;
   }
-  const newCar = await Car.create(req.body);
+  const newCar = await car.create(req.body);
   res.redirect("/car/"+ newCar._id);
   
   console.log(req.body)
@@ -80,21 +81,14 @@ catch(err){
 }
 
 
-try{
-app.get('/car',async (req,res)=> {
-    const cars = await Car.find()
-    res.render('car.ejs',{cars})
-})}
 
-catch(err){
-    console.log(err)
-}
+
 
 
 try{
 app.get('/car/:id', async (req,res)=>{
 console.log(req.params.id)
-const foundCar = await Car.findById(req.params.id)
+const foundCar = await car.findById(req.params.id)
 res.render('show.ejs', {foundCar})
 })
 }
@@ -104,7 +98,7 @@ catch(err){
 
 try{
 app.delete('/car/:id', async (req,res) => {
-    await Car.findByIdAndDelete(req.params.id)
+    await car.findByIdAndDelete(req.params.id)
     res.redirect("/car")
 })
 }
