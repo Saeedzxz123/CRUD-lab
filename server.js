@@ -99,7 +99,7 @@ catch(err){
 try{
 app.delete('/car/:id', async (req,res) => {
     await car.findByIdAndDelete(req.params.id)
-    res.redirect("/car")
+    res.redirect("/")
 })
 }
 
@@ -109,7 +109,7 @@ catch(err){
 
 try{
 app.get('/car/:id/edit',async(req,res)=>{
-    const foundCar = await Car.findById(req.params.id)
+    const foundCar = await car.findById(req.params.id)
     res.render('edit.ejs',{foundCar})
 
 })
@@ -130,7 +130,7 @@ app.put('/car/:id',async(req,res)=>{
   } else {
     req.body.isItStreetLegal = false;
   }
-  await Car.findByIdAndUpdate(req.params.id,req.body)
+  await car.findByIdAndUpdate(req.params.id,req.body)
   res.redirect("/car/"+ req.params.id);
 })
 }
